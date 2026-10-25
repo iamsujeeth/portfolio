@@ -1,0 +1,80 @@
+{
+  "title": "Architecture.",
+  "subtitle": "A typical platform I build. Tap any step.",
+  "nodes": [
+    {
+      "id": "source",
+      "label": "Source DBs",
+      "group": "Ingest",
+      "detail": "Aurora MySQL, SQL Server and SFTP file drops from upstream systems.",
+      "tools": [
+        "Aurora MySQL",
+        "SFTP",
+        "PGP"
+      ]
+    },
+    {
+      "id": "dms",
+      "label": "AWS DMS",
+      "group": "Ingest",
+      "detail": "Full load plus ongoing CDC replication, with task monitoring and alerting.",
+      "tools": [
+        "AWS DMS",
+        "CDC"
+      ]
+    },
+    {
+      "id": "s3",
+      "label": "S3 Data Lake",
+      "group": "Store",
+      "detail": "Raw, staged and curated zones in Parquet, partitioned for cheap scans.",
+      "tools": [
+        "S3",
+        "Parquet",
+        "Athena"
+      ]
+    },
+    {
+      "id": "glue",
+      "label": "Glue / Databricks",
+      "group": "Transform",
+      "detail": "PySpark jobs for cleansing, decryption, dedup and data quality checks.",
+      "tools": [
+        "AWS Glue",
+        "Databricks",
+        "PySpark"
+      ]
+    },
+    {
+      "id": "snowflake",
+      "label": "Snowflake",
+      "group": "Store",
+      "detail": "Warehouse with role-based access, key-pair auth and cost-aware warehouses.",
+      "tools": [
+        "Snowflake",
+        "RBAC"
+      ]
+    },
+    {
+      "id": "dbt",
+      "label": "dbt",
+      "group": "Model",
+      "detail": "Staging to marts with tests, docs, snapshots and incremental models.",
+      "tools": [
+        "dbt",
+        "SQL",
+        "Jinja"
+      ]
+    },
+    {
+      "id": "tableau",
+      "label": "Tableau",
+      "group": "Serve",
+      "detail": "Client-facing dashboards with row-level security and usage tracking.",
+      "tools": [
+        "Tableau",
+        "RLS"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "radar": [
+    { "name": "SQL", "level": 5 },
+    { "name": "Tableau", "level": 5 },
+    { "name": "Snowflake", "level": 5 },
+    { "name": "dbt", "level": 4 },
+    { "name": "AWS", "level": 4 },
+    { "name": "Python", "level": 4 },
+    { "name": "Databricks", "level": 3 }
+  ],
+  "groups": [
+    { "name": "BI & Visualization", "items": ["Tableau", "Tableau Prep", "Excel", "Data storytelling"] },
+    { "name": "Data Engineering", "items": ["dbt", "AWS Glue", "AWS DMS", "Databricks", "PySpark", "Airflow"] },
+    { "name": "Databases", "items": ["Snowflake", "Aurora MySQL", "Athena", "PostgreSQL"] },
+    { "name": "Languages", "items": ["SQL", "Python", "Jinja", "Bash"] },
+    { "name": "Cloud & Tooling", "items": ["AWS S3", "Lambda", "IAM", "Git", "CI/CD"] }
+  ]
+}

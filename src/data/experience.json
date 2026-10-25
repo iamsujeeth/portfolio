@@ -1,0 +1,34 @@
+{
+  "jobs": [
+    {
+      "role": "Senior BI / Data Engineer",
+      "company": "SCOR Digital Solutions",
+      "location": "Charlotte, NC",
+      "dates": "EDIT: 20XX - Present",
+      "bullets": [
+        "Build data engineering products for insurance and underwriting on AWS, Snowflake, dbt and Databricks.",
+        "Own client-facing analytics and monthly reporting with automated validation.",
+        "Partner with teams across the US, Europe and APAC. EDIT: add a number here."
+      ]
+    },
+    {
+      "role": "EDIT: Previous role",
+      "company": "EDIT: Company",
+      "location": "City, ST",
+      "dates": "20XX - 20XX",
+      "bullets": [
+        "EDIT: Start with a verb and include a number.",
+        "EDIT: Second impact bullet."
+      ]
+    }
+  ],
+  "education": [
+    { "degree": "MS, Computer Information Systems", "school": "University of Central Missouri", "year": "2018" },
+    { "degree": "BTech, Electronics and Communication Engineering", "school": "JNTU Hyderabad", "year": "2015" }
+  ],
+  "certifications": [
+    { "name": "AWS Certified Solutions Architect", "issuer": "Amazon Web Services", "url": "" },
+    { "name": "Machine Learning with Python", "issuer": "Microsoft", "url": "" },
+    { "name": "Big Data", "issuer": "IBM", "url": "" }
+  ]
+}

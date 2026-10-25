@@ -1,0 +1,38 @@
+{
+  "name": "Sujeeth",
+  "title": "Senior Data & Analytics Engineer",
+  "headline": "Pipelines in. Clarity out.",
+  "tagline": "I build data pipelines and analytics products that turn raw insurance data into decisions.",
+  "bio": "I design end-to-end data platforms, from CDC ingestion on AWS to modeled layers in Snowflake and dbt, and the dashboards people actually use. Most of my work sits in insurance and reinsurance, where data quality and auditability matter as much as speed. EDIT: add 1-2 lines about what you enjoy or what you are looking for next.",
+  "location": "Charlotte, NC",
+  "email": "you@example.com",
+  "resume": "/resume.pdf",
+  "headshot": "",
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/your-handle",
+    "github": "https://github.com/your-username",
+    "tableau": "https://public.tableau.com/app/profile/your-profile"
+  },
+  "kpis": [
+    {
+      "label": "Years in data",
+      "value": 10,
+      "suffix": "+"
+    },
+    {
+      "label": "Dashboards shipped",
+      "value": 40,
+      "suffix": "+"
+    },
+    {
+      "label": "Pipelines in production",
+      "value": 15,
+      "suffix": "+"
+    },
+    {
+      "label": "Certifications",
+      "value": 3,
+      "suffix": ""
+    }
+  ]
+}

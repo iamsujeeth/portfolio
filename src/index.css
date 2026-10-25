@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Apple-style palette. Light is the default; .dark on <html> switches it. */
+:root {
+  --canvas: #ffffff;
+  --surface: #f5f5f7;
+  --card: #ffffff;
+  --ink: #1d1d1f;
+  --muted: #6e6e73;
+  --line: #d2d2d7;
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --nav: rgba(255, 255, 255, 0.72);
+  --shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 2px 4px 16px rgba(0, 0, 0, 0.16);
+}
+.dark {
+  --canvas: #000000;
+  --surface: #0d0d0e;
+  --card: #1d1d1f;
+  --ink: #f5f5f7;
+  --muted: #a1a1a6;
+  --line: #424245;
+  --accent: #2997ff;
+  --accent-hover: #47a6ff;
+  --nav: rgba(22, 22, 23, 0.8);
+  --shadow: none;
+  --shadow-hover: none;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 3rem; }
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.wrap { @apply mx-auto max-w-[1120px] px-5 sm:px-8; }
+.section { @apply py-24 sm:py-32; }
+
+/* Two-tone Apple headline: "Projects. <span>Built for real decisions.</span>" */
+.headline { @apply text-[40px] font-semibold leading-[1.08] tracking-[-0.025em] text-ink sm:text-[56px]; }
+.headline span { @apply text-muted; }
+.lead { @apply text-[19px] leading-relaxed text-muted sm:text-[21px]; }
+
+.card {
+  @apply rounded-[28px] bg-card;
+  box-shadow: var(--shadow);
+}
+.card-hover { @apply transition duration-300 hover:scale-[1.01]; }
+.card-hover:hover { box-shadow: var(--shadow-hover); }
+
+.pill { @apply inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-[17px] text-white transition hover:bg-accent-hover; }
+.pill-sm { @apply inline-flex items-center rounded-full bg-accent px-3 py-1 text-xs text-white transition hover:bg-accent-hover; }
+.link { @apply inline-flex items-center gap-0.5 text-[17px] text-accent hover:underline; }
+.tag { @apply rounded-full bg-surface px-3 py-1 text-[13px] text-ink; }
+.dark .tag { background: #2c2c2e; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+.react-flow__attribution { display: none; }
+.react-flow { background: transparent !important; }
