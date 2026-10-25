@@ -1,34 +1,42 @@
 {
   "jobs": [
     {
-      "role": "Senior BI / Data Engineer",
-      "company": "SCOR Digital Solutions",
+      "role": "Senior Business Intelligence Engineer",
+      "company": "SCOR Global Life Americas",
       "location": "Charlotte, NC",
-      "dates": "EDIT: 20XX - Present",
-      "bullets": [
-        "Build data engineering products for insurance and underwriting on AWS, Snowflake, dbt and Databricks.",
-        "Own client-facing analytics and monthly reporting with automated validation.",
-        "Partner with teams across the US, Europe and APAC. EDIT: add a number here."
-      ]
+      "dates": "April 2022 to Present",
+      "description": "Build and maintain data ingestion, warehouse models, data quality checks, and dashboards with SQL, dbt, Snowflake, AWS, Python, Databricks, and Tableau."
     },
     {
-      "role": "EDIT: Previous role",
-      "company": "EDIT: Company",
-      "location": "City, ST",
-      "dates": "20XX - 20XX",
-      "bullets": [
-        "EDIT: Start with a verb and include a number.",
-        "EDIT: Second impact bullet."
-      ]
+      "role": "Data Analyst",
+      "company": "Syngenta",
+      "location": "Raleigh, NC",
+      "dates": "August 2019 to April 2022",
+      "description": "Built data models, dashboards, and automated workflows using SQL, Python, AWS, Tableau, and Power BI. Helped teams use data to answer business questions."
+    },
+    {
+      "role": "Data Scientist",
+      "company": "CrediVia Inc.",
+      "location": "Raleigh, NC",
+      "dates": "April 2019 to August 2019",
+      "description": "Used Python and statistical models to study risk, built Tableau dashboards, and explained results to support business decisions."
+    },
+    {
+      "role": "Business Intelligence Engineer",
+      "company": "ValueLabs LLP",
+      "location": "Hyderabad, India",
+      "dates": "May 2015 to July 2017",
+      "description": "Built data warehouses and dashboards, supported data migrations, and analyzed structured data."
     }
   ],
   "education": [
-    { "degree": "MS, Computer Information Systems", "school": "University of Central Missouri", "year": "2018" },
-    { "degree": "BTech, Electronics and Communication Engineering", "school": "JNTU Hyderabad", "year": "2015" }
+    { "degree": "MS, Computer Information Systems & Information Technology", "school": "University of Central Missouri", "year": "2018" },
+    { "degree": "BTech, Electronics & Communication Engineering", "school": "Jawaharlal Nehru Technological University", "year": "2015" }
   ],
   "certifications": [
-    { "name": "AWS Certified Solutions Architect", "issuer": "Amazon Web Services", "url": "" },
-    { "name": "Machine Learning with Python", "issuer": "Microsoft", "url": "" },
-    { "name": "Big Data", "issuer": "IBM", "url": "" }
+    { "name": "AWS Solutions Architect", "issuer": "Amazon Web Services", "url": "" },
+    { "name": "Principles of Machine Learning: Python Edition", "issuer": "Microsoft", "url": "" },
+    { "name": "Intermediate Python in Data Science", "issuer": "DataCamp", "url": "" },
+    { "name": "Big Data Foundations, Level 1", "issuer": "IBM", "url": "" }
   ]
 }

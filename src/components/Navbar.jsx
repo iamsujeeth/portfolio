@@ -3,10 +3,12 @@ import { Menu, Moon, Sun, X } from 'lucide-react'
 import profile from '../data/profile.json'
 
 const links = [
-  { href: '#projects', label: 'Work' },
-  { href: '#pipeline', label: 'Architecture' },
+  { href: '#impact', label: 'Impact' },
+  { href: '#approach', label: 'Approach' },
   { href: '#skills', label: 'Skills' },
-  { href: '#experience', label: 'Experience' },
+  { href: '#experience', label: 'Background' },
+  { href: '#education', label: 'Education' },
+  { href: '#credentials', label: 'Certifications' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -20,7 +22,7 @@ export default function Navbar() {
   }, [dark])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-xl backdrop-saturate-150" style={{ background: 'var(--nav)' }}>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line" style={{ background: 'var(--nav)' }}>
       <nav className="wrap flex h-12 items-center justify-between">
         <a href="#top" className="text-[15px] font-semibold tracking-tight text-ink">{profile.name}</a>
 
@@ -38,7 +40,6 @@ export default function Navbar() {
           >
             {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
-          <a href={profile.resume} download className="pill-sm hidden sm:inline-flex">Resume</a>
           <button onClick={() => setOpen(!open)} aria-label="Menu" className="p-1 text-ink md:hidden">
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -50,7 +51,6 @@ export default function Navbar() {
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block border-b border-line py-3 text-[17px] font-semibold text-ink">{l.label}</a>
           ))}
-          <a href={profile.resume} download className="link mt-4">Download resume ›</a>
         </div>
       )}
     </header>

@@ -2,32 +2,35 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Apple-style palette. Light is the default; .dark on <html> switches it. */
 :root {
-  --canvas: #ffffff;
-  --surface: #f5f5f7;
+  --canvas: #f8f9fa;
+  --surface: #eef0f2;
   --card: #ffffff;
-  --ink: #1d1d1f;
-  --muted: #6e6e73;
-  --line: #d2d2d7;
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --nav: rgba(255, 255, 255, 0.72);
-  --shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 2px 4px 16px rgba(0, 0, 0, 0.16);
+  --ink: #252a30;
+  --muted: #68717b;
+  --line: #dce1e6;
+  --accent: #606a75;
+  --accent-hover: #4c5661;
+  --accent-fill: #343a42;
+  --accent-fill-hover: #252a31;
+  --nav: rgba(248, 249, 250, 0.96);
+  --shadow: 0 8px 24px rgba(37, 42, 48, 0.05);
+  --shadow-hover: 0 12px 28px rgba(37, 42, 48, 0.09);
 }
 .dark {
-  --canvas: #000000;
-  --surface: #0d0d0e;
-  --card: #1d1d1f;
-  --ink: #f5f5f7;
-  --muted: #a1a1a6;
-  --line: #424245;
-  --accent: #2997ff;
-  --accent-hover: #47a6ff;
-  --nav: rgba(22, 22, 23, 0.8);
-  --shadow: none;
-  --shadow-hover: none;
+  --canvas: #191c20;
+  --surface: #22272d;
+  --card: #292f36;
+  --ink: #f1f3f5;
+  --muted: #b0b7bf;
+  --line: #3c444d;
+  --accent: #aab2bc;
+  --accent-hover: #c2c9d1;
+  --accent-fill: #454d57;
+  --accent-fill-hover: #59626d;
+  --nav: rgba(25, 28, 32, 0.96);
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.2);
 }
 
 @theme inline {
@@ -39,10 +42,13 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --color-accent-fill: var(--accent-fill);
+  --color-accent-fill-hover: var(--accent-fill-hover);
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 3rem; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 body {
   background: var(--canvas);
   color: var(--ink);
@@ -53,26 +59,24 @@ body {
 .wrap { @apply mx-auto max-w-[1120px] px-5 sm:px-8; }
 .section { @apply py-24 sm:py-32; }
 
-/* Two-tone Apple headline: "Projects. <span>Built for real decisions.</span>" */
 .headline { @apply text-[40px] font-semibold leading-[1.08] tracking-[-0.025em] text-ink sm:text-[56px]; }
 .headline span { @apply text-muted; }
 .lead { @apply text-[19px] leading-relaxed text-muted sm:text-[21px]; }
 
 .card {
-  @apply rounded-[28px] bg-card;
+  @apply rounded-2xl border border-line bg-card;
   box-shadow: var(--shadow);
 }
-.card-hover { @apply transition duration-300 hover:scale-[1.01]; }
+.card-hover { @apply transition duration-300; }
 .card-hover:hover { box-shadow: var(--shadow-hover); }
 
-.pill { @apply inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-[17px] text-white transition hover:bg-accent-hover; }
-.pill-sm { @apply inline-flex items-center rounded-full bg-accent px-3 py-1 text-xs text-white transition hover:bg-accent-hover; }
+.skill-web-node { position: absolute; width: 190px; transform: translate(-50%, -50%); }
+
+@media (max-width: 639px) {
+  .skill-web { display: grid; height: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+  .skill-web-lines, .skill-web-hub { display: none; }
+  .skill-web-node { position: static; width: 100%; transform: none !important; }
+}
+
+.pill { @apply inline-flex items-center gap-1.5 rounded-md bg-accent-fill px-6 py-3 text-[17px] text-white transition hover:bg-accent-fill-hover; }
 .link { @apply inline-flex items-center gap-0.5 text-[17px] text-accent hover:underline; }
-.tag { @apply rounded-full bg-surface px-3 py-1 text-[13px] text-ink; }
-.dark .tag { background: #2c2c2e; }
-
-.no-scrollbar { scrollbar-width: none; }
-.no-scrollbar::-webkit-scrollbar { display: none; }
-
-.react-flow__attribution { display: none; }
-.react-flow { background: transparent !important; }

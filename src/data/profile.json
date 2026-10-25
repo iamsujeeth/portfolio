@@ -1,17 +1,15 @@
 {
   "name": "Sujeeth",
   "title": "Senior Data & Analytics Engineer",
-  "headline": "Pipelines in. Clarity out.",
-  "tagline": "I build data pipelines and analytics products that turn raw insurance data into decisions.",
-  "bio": "I design end-to-end data platforms, from CDC ingestion on AWS to modeled layers in Snowflake and dbt, and the dashboards people actually use. Most of my work sits in insurance and reinsurance, where data quality and auditability matter as much as speed. EDIT: add 1-2 lines about what you enjoy or what you are looking for next.",
+  "headline": "I build data systems and dashboards.",
+  "tagline": "I have spent 10+ years moving data from databases and files into Snowflake, checking its accuracy, and shaping it with SQL, Python, and dbt. I build Tableau and Power BI dashboards that help teams follow results. My work includes 70+ dbt models, 98% data reconciliation accuracy, and dashboard load times improved by about 60%.",
+  "bio": "Senior Data & Analytics Engineer with 10+ years of experience building data systems and dashboards. I move data from databases and files into warehouses, check its accuracy, and shape it with SQL, Python, and dbt. I also build Tableau and Power BI dashboards. My work includes 70+ dbt models, 98% data reconciliation accuracy, and dashboard load times improved by about 60%.",
   "location": "Charlotte, NC",
-  "email": "you@example.com",
-  "resume": "/resume.pdf",
-  "headshot": "",
+  "email": "nidumolusujeeth@gmail.com",
+  "headshot": "/profile-photo.jpg",
   "links": {
-    "linkedin": "https://www.linkedin.com/in/your-handle",
-    "github": "https://github.com/your-username",
-    "tableau": "https://public.tableau.com/app/profile/your-profile"
+    "linkedin": "https://www.linkedin.com/in/sujeethnidumolu",
+    "github": "https://github.com/iamsujeeth"
   },
   "kpis": [
     {
@@ -20,18 +18,18 @@
       "suffix": "+"
     },
     {
-      "label": "Dashboards shipped",
-      "value": 40,
-      "suffix": "+"
-    },
-    {
-      "label": "Pipelines in production",
-      "value": 15,
-      "suffix": "+"
+      "label": "Skill areas",
+      "value": 6,
+      "suffix": ""
     },
     {
       "label": "Certifications",
-      "value": 3,
+      "value": 4,
+      "suffix": ""
+    },
+    {
+      "label": "Degrees",
+      "value": 2,
       "suffix": ""
     }
   ]

@@ -23,20 +23,36 @@ function Tile({ eyebrow, title, sub, url, delay }) {
 
 export default function Certifications() {
   return (
-    <section className="section">
+    <>
+      <section id="education" className="section bg-surface">
+        <div className="wrap">
+          <Reveal>
+            <h2 className="headline">Education. <span>Where my technical foundation began.</span></h2>
+          </Reveal>
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            {data.education.map((item) => (
+              <article key={item.degree} className="card p-6 sm:p-7">
+                <p className="text-sm font-medium text-muted">{item.year}</p>
+                <h3 className="mt-3 text-xl font-semibold leading-snug text-ink">{item.degree}</h3>
+                <p className="mt-2 text-muted">{item.school}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="credentials" className="section">
       <div className="wrap">
         <Reveal>
-          <h2 className="headline">Credentials. <span>Certified and schooled.</span></h2>
+          <h2 className="headline">Certifications. <span>Continuing to build expertise.</span></h2>
         </Reveal>
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {data.certifications.map((c, i) => (
             <Tile key={c.name} eyebrow="Certification" title={c.name} sub={c.issuer} url={c.url} delay={i * 0.05} />
           ))}
-          {data.education.map((e, i) => (
-            <Tile key={e.degree} eyebrow={`Education · ${e.year}`} title={e.degree} sub={e.school} delay={0.15 + i * 0.05} />
-          ))}
         </div>
       </div>
-    </section>
+      </section>
+    </>
   )
 }

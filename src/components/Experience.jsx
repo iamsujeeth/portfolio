@@ -1,38 +1,50 @@
+import { useState } from 'react'
+import { ChevronDown } from 'lucide-react'
 import data from '../data/experience.json'
 import Reveal from './Reveal'
 
 export default function Experience() {
+  const [expandedJob, setExpandedJob] = useState(null)
+
   return (
     <section id="experience" className="section bg-surface">
       <div className="wrap">
         <Reveal>
-          <h2 className="headline">Experience. <span>Where I've done it.</span></h2>
+          <h2 className="headline">Background. <span>A career built over time.</span></h2>
         </Reveal>
 
-        <div className="mt-14 divide-y divide-line border-y border-line">
-          {data.jobs.map((job, i) => (
-            <Reveal key={job.role + job.company} delay={i * 0.05}>
-              <div className="grid gap-4 py-10 md:grid-cols-[260px_1fr]">
-                <div>
-                  <p className="text-[15px] text-muted">{job.dates}</p>
-                  <p className="mt-1 text-[15px] text-muted">{job.location}</p>
+        <ol className="relative mt-12 space-y-4 before:absolute before:bottom-8 before:left-[11px] before:top-8 before:w-px before:bg-line sm:space-y-5">
+          {data.jobs.map((job, index) => (
+            <Reveal key={job.role + job.company} delay={index * 0.05}>
+              <li className="relative pl-9">
+                <span className="absolute left-1 top-7 h-4 w-4 rounded-full border-[3px] border-accent bg-canvas" />
+                <div className="card p-5 sm:p-6">
+                  <div>
+                    <button
+                      type="button"
+                      aria-expanded={expandedJob === index}
+                      aria-controls={`job-description-${index}`}
+                      onClick={() => setExpandedJob(expandedJob === index ? null : index)}
+                      className="group flex w-full items-center justify-between gap-4 text-left"
+                    >
+                      <span className="text-lg font-semibold text-ink">{job.role}</span>
+                      <ChevronDown className={`h-5 w-5 shrink-0 text-muted transition-transform ${expandedJob === index ? 'rotate-180' : ''}`} aria-hidden="true" />
+                    </button>
+                    <p className="mt-1 text-muted">{job.company} <span aria-hidden="true">·</span> {job.location}</p>
+                  </div>
+                  <p className="mt-1 text-sm font-medium text-muted">{job.dates}</p>
+                  <p
+                    id={`job-description-${index}`}
+                    hidden={expandedJob !== index}
+                    className="mt-4 max-w-3xl border-t border-line pt-4 leading-relaxed text-muted"
+                  >
+                    {job.description}
+                  </p>
                 </div>
-                <div>
-                  <h3 className="text-[24px] font-semibold tracking-tight text-ink">{job.role}</h3>
-                  <p className="text-[17px] text-muted">{job.company}</p>
-                  <ul className="mt-5 space-y-2.5">
-                    {job.bullets.map((b) => (
-                      <li key={b} className="flex gap-3 text-[17px] leading-relaxed text-ink">
-                        <span className="mt-[11px] h-1 w-1 shrink-0 rounded-full bg-muted" />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              </li>
             </Reveal>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   )

@@ -1,18 +1,78 @@
 {
-  "radar": [
-    { "name": "SQL", "level": 5 },
-    { "name": "Tableau", "level": 5 },
-    { "name": "Snowflake", "level": 5 },
-    { "name": "dbt", "level": 4 },
-    { "name": "AWS", "level": 4 },
-    { "name": "Python", "level": 4 },
-    { "name": "Databricks", "level": 3 }
+  "web": [
+    {
+      "id": "code",
+      "name": "SQL & programming",
+      "icon": "code",
+      "items": ["SQL", "T-SQL", "PL/SQL", "Python", "pandas", "NumPy", "R", "Spark", "PySpark", "DAX", "scikit-learn", "JSON & XML"]
+    },
+    {
+      "id": "pipelines",
+      "name": "Data pipelines",
+      "icon": "pipeline",
+      "items": ["ETL / ELT", "Incremental loads", "CDC", "AWS DMS", "AWS Glue", "Snowpipe", "Informatica PowerCenter", "SSIS", "Denodo", "REST APIs", "GitLab CI/CD", "Git", "Bitbucket"]
+    },
+    {
+      "id": "modeling",
+      "name": "Data modeling",
+      "icon": "model",
+      "items": ["dbt models, macros & tests", "Dimensional modeling", "Star schemas", "Facts & dimensions", "Materialization strategy", "Warehouses & cubes", "Data documentation", "Trusted metrics"]
+    },
+    {
+      "id": "platforms",
+      "name": "Cloud & databases",
+      "icon": "cloud",
+      "items": ["Snowflake", "Snowpark", "Databricks", "AWS S3", "Athena", "RDS", "Redshift", "IAM", "Lambda", "SQL Server", "MySQL / Aurora", "Oracle", "Teradata", "Hadoop, Hive & Pig"]
+    },
+    {
+      "id": "dashboards",
+      "name": "Dashboards",
+      "icon": "chart",
+      "items": ["Tableau Desktop, Cloud & Server", "Tableau Prep", "Power BI", "Power Query", "QlikView", "SSRS", "LOD calculations", "Parameters & actions", "Managed extracts", "Excel", "Power Pivot", "Pivot Tables"]
+    },
+    {
+      "id": "quality",
+      "name": "Analytics & data quality",
+      "icon": "quality",
+      "items": ["Data governance", "Data stewardship", "Record reconciliation", "Data observability", "Metadata & lineage", "Data dictionaries", "Quality standards", "RBAC, MFA & key-pair authentication", "Statistical analysis", "A/B testing", "Cohort analysis", "Regression", "Classification", "KPI definition"]
+    }
   ],
   "groups": [
-    { "name": "BI & Visualization", "items": ["Tableau", "Tableau Prep", "Excel", "Data storytelling"] },
-    { "name": "Data Engineering", "items": ["dbt", "AWS Glue", "AWS DMS", "Databricks", "PySpark", "Airflow"] },
-    { "name": "Databases", "items": ["Snowflake", "Aurora MySQL", "Athena", "PostgreSQL"] },
-    { "name": "Languages", "items": ["SQL", "Python", "Jinja", "Bash"] },
-    { "name": "Cloud & Tooling", "items": ["AWS S3", "Lambda", "IAM", "Git", "CI/CD"] }
+    {
+      "name": "SQL & Programming",
+      "items": ["SQL", "T-SQL", "PL/SQL", "Python", "pandas", "NumPy", "scikit-learn", "R", "Spark", "PySpark", "DAX", "JSON & XML"]
+    },
+    {
+      "name": "Data Engineering",
+      "items": ["ETL / ELT", "Medallion architecture", "Incremental & CDC loads", "Source-to-target mapping", "Snowpipe", "AWS DMS", "AWS Glue", "Informatica PowerCenter", "SSIS", "Denodo", "REST APIs", "GitLab CI/CD"]
+    },
+    {
+      "name": "Transformation & Modeling",
+      "items": ["dbt models, macros & tests", "Data documentation", "Dimensional modeling", "Star schemas", "Facts & dimensions", "Materialization strategy", "Data warehouses & cubes", "Trusted metrics"]
+    },
+    {
+      "name": "BI & Self-Service",
+      "items": ["Tableau Desktop, Cloud & Server", "Tableau Prep", "LOD calculations", "Parameters & actions", "Managed extracts", "Performance recordings", "Power BI", "Power Query", "QlikView", "SSRS", "Semantic layers"]
+    },
+    {
+      "name": "Cloud & Data Platforms",
+      "items": ["Snowflake", "Snowpipe", "Snowpark", "Databricks", "AWS S3", "Athena", "RDS", "Redshift", "IAM", "Lambda", "SQL Server", "MySQL / Aurora", "Oracle", "Teradata", "Hadoop, Hive & Pig"]
+    },
+    {
+      "name": "Governance & Quality",
+      "items": ["Data governance", "Data stewardship", "Record reconciliation", "Data observability", "Metadata & lineage", "Data dictionaries", "Quality standards", "RBAC, MFA & key-pair authentication"]
+    },
+    {
+      "name": "Analytics & Data Science",
+      "items": ["Statistical analysis", "A/B testing", "Cohort analysis", "Regression", "Classification", "Random Forest", "K-nearest neighbors", "Bayesian optimization", "KPI definition"]
+    },
+    {
+      "name": "AI & Delivery",
+      "items": ["AI-assisted development", "Prompt & context engineering", "Git", "GitLab", "Bitbucket", "JIRA", "Confluence", "Agile & Scrum"]
+    },
+    {
+      "name": "Microsoft Tools",
+      "items": ["Excel", "Power Query", "Power Pivot", "Pivot Tables", "Access", "SharePoint", "PowerApps", "Power Automate"]
+    }
   ]
 }

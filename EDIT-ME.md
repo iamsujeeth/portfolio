@@ -4,16 +4,13 @@ All text lives in `src/data/`. You do not need to touch the components.
 
 | File | What it controls |
 |---|---|
-| profile.json | Name, title, tagline, bio, email, links, the 4 KPI counters |
-| pipeline.json | The clickable architecture diagram (steps, details, tools) |
-| projects.json | Project cards and case-study popups |
-| skills.json | Radar chart levels (1-5) and skill tags |
-| experience.json | Jobs, education, certifications |
+| profile.json | Name, title, summary, contact details, and verified overview counters |
+| achievements.json | Selected, measurable work outcomes |
+| skills.json | Skill categories and the interactive skills web |
+| experience.json | Career timeline, education, and certifications |
 
 Search for `EDIT` to find every placeholder.
 
 Files to add to `public/`:
-- resume.pdf - the Resume buttons download this
-- headshot.jpg - then set "headshot": "/headshot.jpg" in profile.json
+- profile-photo.jpg - the portrait used in the hero
 - og-image.png (1200x630) - preview image when shared on LinkedIn
-- Project screenshots - e.g. public/projects/cdc.png, then set "image": "/projects/cdc.png"

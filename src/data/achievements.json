@@ -1,0 +1,32 @@
+[
+  {
+    "value": "70+",
+    "label": "dbt models",
+    "detail": "Built and maintained a modeled transformation layer."
+  },
+  {
+    "value": "98%",
+    "label": "data reconciliation accuracy",
+    "detail": "Validated data across ingestion and warehouse layers."
+  },
+  {
+    "value": "~60%",
+    "label": "faster dashboard load times",
+    "detail": "Improved dashboard performance through targeted tuning."
+  },
+  {
+    "value": "95%+",
+    "label": "on-time refresh delivery",
+    "detail": "Met dashboard refresh service-level targets."
+  },
+  {
+    "value": "100M+",
+    "label": "rows handled",
+    "detail": "Tuned data models and warehouse performance at scale."
+  },
+  {
+    "value": "12%",
+    "label": "less manual workload",
+    "detail": "Automated recurring data workflows."
+  }
+]

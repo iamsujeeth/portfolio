@@ -1,75 +1,114 @@
-import ReactEChartsCore from 'echarts-for-react/esm/core'
-import * as echarts from 'echarts/core'
-import { RadarChart } from 'echarts/charts'
-import { TooltipComponent } from 'echarts/components'
-import { CanvasRenderer } from 'echarts/renderers'
+import { useEffect, useState } from 'react'
+import { Braces, ChartNoAxesCombined, Cloud, Database, GitBranch, Layers, ShieldCheck } from 'lucide-react'
 import skills from '../data/skills.json'
 import Reveal from './Reveal'
-import useDarkMode from './useDarkMode'
 
-// Only register what we use, keeps the bundle small
-echarts.use([RadarChart, TooltipComponent, CanvasRenderer])
+const iconByName = {
+  code: Braces,
+  pipeline: GitBranch,
+  model: Layers,
+  cloud: Cloud,
+  chart: ChartNoAxesCombined,
+  quality: ShieldCheck,
+}
 
-const levelLabel = ['', 'Familiar', 'Working', 'Proficient', 'Advanced', 'Expert']
+const nodePositions = [
+  { left: '17%', top: '18%' },
+  { left: '50%', top: '9%' },
+  { left: '83%', top: '18%' },
+  { left: '83%', top: '82%' },
+  { left: '50%', top: '91%' },
+  { left: '17%', top: '82%' },
+]
 
 export default function Skills() {
-  const dark = useDarkMode()
-  const c = dark
-    ? { text: '#f5f5f7', grid: '#3a3a3c', accent: '#2997ff', fill: 'rgba(41,151,255,0.18)', tipBg: '#1d1d1f' }
-    : { text: '#1d1d1f', grid: '#e5e5ea', accent: '#0071e3', fill: 'rgba(0,113,227,0.12)', tipBg: '#ffffff' }
+  const [activeId, setActiveId] = useState(skills.web[0].id)
+  const [mobile, setMobile] = useState(() => window.innerWidth < 640)
+  const active = skills.web.find((category) => category.id === activeId) ?? skills.web[0]
 
-  const option = {
-    tooltip: {
-      trigger: 'item',
-      backgroundColor: c.tipBg,
-      borderWidth: 0,
-      textStyle: { color: c.text, fontFamily: '-apple-system, Inter, sans-serif' },
-      formatter: () => skills.radar.map((s) => `${s.name}: <b>${levelLabel[s.level]}</b>`).join('<br/>'),
-    },
-    radar: {
-      indicator: skills.radar.map((s) => ({ name: s.name, max: 5 })),
-      radius: '66%',
-      splitNumber: 5,
-      shape: 'circle',
-      axisName: { color: c.text, fontFamily: '-apple-system, Inter, sans-serif', fontSize: 13, fontWeight: 600 },
-      splitLine: { lineStyle: { color: c.grid } },
-      splitArea: { show: false },
-      axisLine: { lineStyle: { color: c.grid } },
-    },
-    series: [
-      {
-        type: 'radar',
-        symbol: 'circle',
-        symbolSize: 7,
-        data: [{ value: skills.radar.map((s) => s.level), name: 'Proficiency' }],
-        lineStyle: { color: c.accent, width: 2 },
-        itemStyle: { color: c.accent },
-        areaStyle: { color: c.fill },
-      },
-    ],
-  }
+  useEffect(() => {
+    const handleResize = () => setMobile(window.innerWidth < 640)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   return (
     <section id="skills" className="section">
       <div className="wrap">
         <Reveal>
-          <h2 className="headline">Skills. <span>The tools behind the work.</span></h2>
+          <h2 className="headline">Skills. <span>Select an area to explore.</span></h2>
+          <p className="lead mt-5 max-w-2xl">The tools and methods I use across the data lifecycle.</p>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-2">
-          <Reveal className="card p-6">
-            <ReactEChartsCore echarts={echarts} option={option} notMerge style={{ height: 400 }} />
-          </Reveal>
+        <Reveal className="card mt-10 overflow-hidden p-5 sm:p-8">
+          <div
+            className="skill-web relative mx-auto h-[340px] max-w-[820px]"
+            style={mobile ? { display: 'grid', height: 'auto', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.75rem' } : undefined}
+          >
+            <svg className="skill-web-lines pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 820 340" preserveAspectRatio="none" aria-hidden="true">
+              {nodePositions.map((position) => (
+                <line
+                  key={`${position.left}-${position.top}`}
+                  x1="410"
+                  y1="170"
+                  x2={Number.parseFloat(position.left) * 8.2}
+                  y2={Number.parseFloat(position.top) * 3.4}
+                  className="stroke-line"
+                  strokeWidth="1.5"
+                />
+              ))}
+            </svg>
 
-          <Reveal delay={0.1} className="card divide-y divide-line p-8">
-            {skills.groups.map((g) => (
-              <div key={g.name} className="py-5 first:pt-0 last:pb-0">
-                <h3 className="text-[17px] font-semibold text-ink">{g.name}</h3>
-                <p className="mt-1 text-[15px] leading-relaxed text-muted">{g.items.join(' · ')}</p>
+            <div hidden={mobile} className="skill-web-hub absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2">
+              <div className="flex h-20 w-20 flex-col items-center justify-center rounded-full border border-line bg-surface text-center shadow-sm">
+                <Database className="h-5 w-5 text-ink" aria-hidden="true" />
+                <span className="mt-1 text-[10px] font-semibold text-ink">DATA</span>
               </div>
-            ))}
-          </Reveal>
-        </div>
+            </div>
+
+            {skills.web.map((category, index) => {
+              const Icon = iconByName[category.icon]
+              const position = nodePositions[index]
+
+              return (
+                <button
+                  key={category.id}
+                  type="button"
+                  onClick={() => setActiveId(category.id)}
+                  aria-pressed={activeId === category.id}
+                  className={`skill-web-node z-20 flex items-center gap-2 rounded-xl border px-3 py-2 text-left shadow-sm transition sm:gap-3 sm:px-4 sm:py-3 ${
+                    activeId === category.id
+                      ? 'border-accent bg-card ring-1 ring-accent'
+                      : 'border-line bg-card hover:bg-surface'
+                  }`}
+                  style={mobile
+                    ? { position: 'static', transform: 'none', width: '100%' }
+                    : { left: position.left, top: position.top }}
+                >
+                  <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg sm:h-10 sm:w-10 ${activeId === category.id ? 'bg-accent-fill text-white' : 'bg-surface text-ink'}`}>
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+                  </span>
+                  <span className="text-xs font-semibold leading-tight text-ink sm:text-sm">{category.name}</span>
+                </button>
+              )
+            })}
+          </div>
+
+          <div className="border-t border-line pt-5" aria-live="polite">
+            <div className="flex items-center gap-2">
+              {(() => {
+                const Icon = iconByName[active.icon]
+                return <Icon className="h-4 w-4 text-ink" aria-hidden="true" />
+              })()}
+              <h3 className="text-sm font-semibold text-ink">{active.name}</h3>
+            </div>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {active.items.map((item) => (
+                <span key={item} className="rounded-md bg-surface px-2.5 py-1.5 text-xs font-medium text-ink">{item}</span>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   )
