@@ -1,4 +1,6 @@
 import Navbar from './components/Navbar'
+import ScrollProgress from './components/ScrollProgress'
+import ScrollToTop from './components/ScrollToTop'
 import Hero from './components/Hero'
 import Achievements from './components/Achievements'
 import DataFlow from './components/DataFlow'
@@ -10,7 +12,9 @@ import Contact from './components/Contact'
 export default function App() {
   return (
     <>
+      <ScrollProgress />
       <Navbar />
+      <ScrollToTop />
       <main>
         <Hero />
         <Achievements />

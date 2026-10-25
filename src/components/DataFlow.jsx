@@ -8,6 +8,7 @@ import {
   ReactFlow,
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
+import { useReducedMotion } from 'framer-motion'
 import { BarChart3, Braces, Cloud, Database, Layers } from 'lucide-react'
 import Reveal from './Reveal'
 
@@ -61,7 +62,7 @@ function FlowNode({ data }) {
   const Icon = data.icon
 
   return (
-    <div className={`w-[218px] rounded-2xl border bg-card p-4 shadow-sm transition-colors ${data.active ? 'border-accent ring-1 ring-accent' : 'border-line'}`}>
+    <div className={`glass-panel flow-node-card interactive-surface w-[218px] rounded-2xl border p-4 shadow-sm transition-colors ${data.active ? 'border-accent ring-1 ring-accent' : 'border-line'}`}>
       <Handle type="target" position={data.vertical ? Position.Top : Position.Left} className="!h-2 !w-2 !border-2 !border-card !bg-accent" />
       <div className="flex items-center gap-3">
         <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${data.active ? 'bg-accent-fill text-white' : 'bg-surface text-ink'}`}>
@@ -94,6 +95,7 @@ const nodeTypes = { flowStep: FlowNode }
 export default function DataFlow() {
   const [activeStage, setActiveStage] = useState('collect')
   const [vertical, setVertical] = useState(() => window.innerWidth < 768)
+  const reduceMotion = useReducedMotion()
   const active = stages.find((stage) => stage.id === activeStage) ?? stages[0]
 
   useEffect(() => {
@@ -119,11 +121,11 @@ export default function DataFlow() {
       source: stage.id,
       target: stages[index + 1].id,
       type: 'smoothstep',
-      animated: true,
+      animated: !reduceMotion,
       style: { stroke: 'var(--accent)', strokeWidth: 2 },
       markerEnd: { type: MarkerType.ArrowClosed, color: 'var(--accent)' },
     })),
-    [],
+    [reduceMotion],
   )
 
   return (
@@ -134,7 +136,7 @@ export default function DataFlow() {
           <p className="lead mt-5 max-w-2xl">Select a step to see the work and tools I use at each stage.</p>
         </Reveal>
 
-        <Reveal className="card mt-10 overflow-hidden p-2 sm:p-4">
+        <Reveal className="glass-panel card mt-10 overflow-hidden p-2 sm:p-4">
           <div className={`w-full ${vertical ? 'h-[790px]' : 'h-[330px]'}`} aria-label="Interactive data workflow">
             <ReactFlow
               nodes={nodes}

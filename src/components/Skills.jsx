@@ -40,7 +40,7 @@ export default function Skills() {
           <p className="lead mt-5 max-w-2xl">The tools and methods I use across the data lifecycle.</p>
         </Reveal>
 
-        <Reveal className="card mt-10 overflow-hidden p-5 sm:p-8">
+        <Reveal className="glass-panel card mt-10 overflow-hidden p-5 sm:p-8">
           <div
             className="skill-web relative mx-auto h-[340px] max-w-[820px]"
             style={mobile ? { display: 'grid', height: 'auto', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.75rem' } : undefined}
@@ -76,7 +76,7 @@ export default function Skills() {
                   type="button"
                   onClick={() => setActiveId(category.id)}
                   aria-pressed={activeId === category.id}
-                  className={`skill-web-node z-20 flex items-center gap-2 rounded-xl border px-3 py-2 text-left shadow-sm transition sm:gap-3 sm:px-4 sm:py-3 ${
+                  className={`skill-web-node glass-panel interactive-surface z-20 flex items-center gap-2 rounded-xl border px-3 py-2 text-left shadow-sm transition sm:gap-3 sm:px-4 sm:py-3 ${
                     activeId === category.id
                       ? 'border-accent bg-card ring-1 ring-accent'
                       : 'border-line bg-card hover:bg-surface'

@@ -15,20 +15,55 @@ const links = [
 export default function Navbar() {
   const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'))
   const [open, setOpen] = useState(false)
+  const [activeLink, setActiveLink] = useState('')
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', dark)
     try { localStorage.setItem('theme', dark ? 'dark' : 'light') } catch (e) { /* storage blocked */ }
   }, [dark])
 
+  useEffect(() => {
+    const sections = links
+      .map((link) => document.querySelector(link.href))
+      .filter(Boolean)
+    let frame = 0
+    const update = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        const active = sections
+          .filter((section) => section.getBoundingClientRect().top <= window.innerHeight * 0.3)
+          .at(-1)
+        setActiveLink(active ? `#${active.id}` : '')
+      })
+    }
+
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [])
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line" style={{ background: 'var(--nav)' }}>
+    <header className="glass-nav fixed inset-x-0 top-0 z-50">
       <nav className="wrap flex h-12 items-center justify-between">
         <a href="#top" className="text-[15px] font-semibold tracking-tight text-ink">{profile.name}</a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="no-scrollbar hidden max-w-[72vw] items-center gap-1 overflow-x-auto md:flex">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-xs text-ink/80 transition hover:text-ink">{l.label}</a>
+            <a
+              key={l.href}
+              href={l.href}
+              aria-current={activeLink === l.href ? 'location' : undefined}
+              className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs transition ${
+                activeLink === l.href ? 'bg-surface font-semibold text-ink' : 'text-muted hover:bg-surface/70 hover:text-ink'
+              }`}
+            >
+              {l.label}
+            </a>
           ))}
         </div>
 
@@ -36,7 +71,7 @@ export default function Navbar() {
           <button
             onClick={() => setDark(!dark)}
             aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="rounded-full p-1.5 text-ink/80 transition hover:text-ink"
+            className="glass-control rounded-full p-2 text-ink/80 transition hover:text-ink"
           >
             {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>

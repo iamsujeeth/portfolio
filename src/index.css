@@ -49,6 +49,7 @@
 
 html { scroll-behavior: smooth; scroll-padding-top: 3rem; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+html { scroll-padding-top: 5rem; }
 body {
   background: var(--canvas);
   color: var(--ink);
@@ -70,7 +71,77 @@ body {
 .card-hover { @apply transition duration-300; }
 .card-hover:hover { box-shadow: var(--shadow-hover); }
 
+.scroll-progress {
+  position: fixed;
+  z-index: 60;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: 0 50%;
+  background: var(--ink);
+}
+
+.scroll-top-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+.scroll-top-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-top-hidden, .scroll-top-visible {
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.glass-nav {
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+  background: color-mix(in srgb, var(--canvas) 70%, transparent);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+  box-shadow: 0 8px 28px rgba(20, 24, 29, 0.04), inset 0 1px rgba(255, 255, 255, 0.48);
+}
+
+.glass-control {
+  border: 1px solid color-mix(in srgb, var(--line) 76%, transparent);
+  background: color-mix(in srgb, var(--card) 72%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), 0 2px 8px rgba(20, 24, 29, 0.05);
+}
+
+.glass-panel {
+  background: color-mix(in srgb, var(--card) 82%, transparent);
+  background-image: radial-gradient(ellipse at 12% 0%, rgba(255, 255, 255, 0.34), transparent 58%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  backdrop-filter: blur(18px) saturate(145%);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.62), var(--shadow);
+}
+
+.dark .glass-panel {
+  background-image: radial-gradient(ellipse at 12% 0%, rgba(255, 255, 255, 0.09), transparent 58%);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.12), var(--shadow);
+}
+
+.interactive-surface {
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 220ms ease;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .interactive-surface:hover {
+    transform: translateY(-3px);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.72), var(--shadow-hover);
+  }
+}
+
 .skill-web-node { position: absolute; width: 190px; transform: translate(-50%, -50%); }
+.skill-web-node.interactive-surface:hover { transform: translate(-50%, -50%); }
+.flow-node-card.interactive-surface:hover { transform: none; }
 
 @media (max-width: 639px) {
   .skill-web { display: grid; height: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
@@ -80,3 +151,14 @@ body {
 
 .pill { @apply inline-flex items-center gap-1.5 rounded-md bg-accent-fill px-6 py-3 text-[17px] text-white transition hover:bg-accent-fill-hover; }
 .link { @apply inline-flex items-center gap-0.5 text-[17px] text-accent hover:underline; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scroll-top-hidden, .scroll-top-visible { transition: none; }
+}
