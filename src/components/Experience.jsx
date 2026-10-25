@@ -16,9 +16,9 @@ export default function Experience() {
         <ol className="relative mt-12 space-y-4 before:absolute before:bottom-8 before:left-[11px] before:top-8 before:w-px before:bg-line sm:space-y-5">
           {data.jobs.map((job, index) => (
             <Reveal key={job.role + job.company} delay={index * 0.05}>
-              <li className="relative pl-9">
-                <span className="absolute left-1 top-7 h-4 w-4 rounded-full border-[3px] border-accent bg-canvas" />
-                <div className="card p-5 sm:p-6">
+              <li className={`experience-item relative pl-9 ${job.dates.toLowerCase().includes('present') ? 'experience-item-current' : ''}`}>
+                <span className="experience-marker absolute left-1 top-7 h-4 w-4 rounded-full border-[3px] border-accent bg-canvas" aria-hidden="true" />
+                <div className="card experience-card p-5 sm:p-6">
                   <div>
                     <button
                       type="button"
@@ -27,7 +27,12 @@ export default function Experience() {
                       onClick={() => setExpandedJob(expandedJob === index ? null : index)}
                       className="group flex w-full items-center justify-between gap-4 text-left"
                     >
-                      <span className="text-lg font-semibold text-ink">{job.role}</span>
+                      <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                        <span className="text-lg font-semibold text-ink">{job.role}</span>
+                        {job.dates.toLowerCase().includes('present') && (
+                          <span className="current-role-badge"><span className="current-role-light" aria-hidden="true" />Current role</span>
+                        )}
+                      </span>
                       <ChevronDown className={`h-5 w-5 shrink-0 text-muted transition-transform ${expandedJob === index ? 'rotate-180' : ''}`} aria-hidden="true" />
                     </button>
                     <p className="mt-1 text-muted">{job.company} <span aria-hidden="true">·</span> {job.location}</p>
