@@ -31,8 +31,8 @@ export default function Certifications() {
           </Reveal>
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             {data.education.map((item) => (
-              <article key={item.degree} className="card p-6 sm:p-7">
-                <p className="text-sm font-medium text-muted">{item.year}</p>
+              <article key={item.degree} className="card p-5 sm:p-7">
+                <p className="text-sm font-medium text-muted">{item.dates}</p>
                 <h3 className="mt-3 text-xl font-semibold leading-snug text-ink">{item.degree}</h3>
                 <p className="mt-2 text-muted">{item.school}</p>
               </article>
@@ -46,7 +46,7 @@ export default function Certifications() {
         <Reveal>
           <h2 className="headline">Certifications. <span>Continuing to build expertise.</span></h2>
         </Reveal>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {data.certifications.map((c, i) => (
             <Tile key={c.name} eyebrow="Certification" title={c.name} sub={c.issuer} url={c.url} delay={i * 0.05} />
           ))}

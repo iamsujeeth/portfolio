@@ -2,6 +2,7 @@ import Navbar from './components/Navbar'
 import ScrollProgress from './components/ScrollProgress'
 import ScrollToTop from './components/ScrollToTop'
 import StoryRail from './components/StoryRail'
+import AmbientArt from './components/AmbientArt'
 import Hero from './components/Hero'
 import Achievements from './components/Achievements'
 import DataFlow from './components/DataFlow'
@@ -17,6 +18,7 @@ export default function App() {
       <Navbar />
       <ScrollToTop />
       <StoryRail />
+      <AmbientArt />
       <main>
         <Hero />
         <Achievements />

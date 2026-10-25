@@ -5,33 +5,33 @@
       "company": "SCOR Global Life Americas",
       "location": "Charlotte, NC",
       "dates": "April 2022 to Present",
-      "description": "Build and maintain data ingestion, warehouse models, data quality checks, and dashboards with SQL, dbt, Snowflake, AWS, Python, Databricks, and Tableau."
+      "description": "Build data ingestion and ELT workflows that bring database and file data into Snowflake with AWS, dbt, and Python. Maintain more than 70 dbt models and reusable transformations that make warehouse data consistent and ready for analysis. Validate pipelines and data releases with automated checks and reconciliation, supporting 98% reconciliation accuracy. Improve Tableau dashboard performance and reliability, reducing load times by about 60%, and work with stakeholders to define shared metrics."
     },
     {
       "role": "Data Analyst",
       "company": "Syngenta",
       "location": "Raleigh, NC",
       "dates": "August 2019 to April 2022",
-      "description": "Built data models, dashboards, and automated workflows using SQL, Python, AWS, Tableau, and Power BI. Helped teams use data to answer business questions."
+      "description": "Built and maintained Power BI, Tableau, and QlikView dashboards, working with teams to define useful KPIs. Designed data structures and API workflows that brought information together for analysis and dashboard use. Automated data preparation with Python, Power Query, and DAX, improving dashboard refresh performance by 35% and reducing manual work by 12%. Developed forecasting and classification analysis to help teams understand performance and operational trends."
     },
     {
       "role": "Data Scientist",
       "company": "CrediVia Inc.",
       "location": "Raleigh, NC",
       "dates": "April 2019 to August 2019",
-      "description": "Used Python and statistical models to study risk, built Tableau dashboards, and explained results to support business decisions."
+      "description": "Prepared and analyzed financial data with Python, pandas, and NumPy to identify useful patterns. Built and evaluated classification and regression models to estimate risk and support forecasting. Created Tableau dashboards that made model results and trends easier to explore. Explained findings in clear terms so stakeholders could use the analysis in their decisions."
     },
     {
       "role": "Business Intelligence Engineer",
       "company": "ValueLabs LLP",
       "location": "Hyderabad, India",
       "dates": "May 2015 to July 2017",
-      "description": "Built data warehouses and dashboards, supported data migrations, and analyzed structured data."
+      "description": "Designed data warehouse structures and ETL workflows that combined information from multiple source systems. Built Tableau dashboards and analysis views to make operational trends easier to understand. Supported large data migrations and validated records for completeness and accuracy. Used SQL, Python, and statistical analysis to improve data preparation and answer business questions."
     }
   ],
   "education": [
-    { "degree": "MS, Computer Information Systems & Information Technology", "school": "University of Central Missouri", "year": "2018" },
-    { "degree": "BTech, Electronics & Communication Engineering", "school": "Jawaharlal Nehru Technological University", "year": "2015" }
+    { "degree": "MS, Computer Information Systems & Information Technology", "school": "University of Central Missouri", "dates": "August 2017 to December 2018" },
+    { "degree": "BTech, Electronics & Communication Engineering", "school": "Jawaharlal Nehru Technological University", "dates": "May 2011 to May 2015" }
   ],
   "certifications": [
     { "name": "AWS Solutions Architect", "issuer": "Amazon Web Services", "url": "" },

@@ -94,12 +94,12 @@ const nodeTypes = { flowStep: FlowNode }
 
 export default function DataFlow() {
   const [activeStage, setActiveStage] = useState('collect')
-  const [vertical, setVertical] = useState(() => window.innerWidth < 768)
+  const [vertical, setVertical] = useState(() => window.innerWidth < 1024)
   const reduceMotion = useReducedMotion()
   const active = stages.find((stage) => stage.id === activeStage) ?? stages[0]
 
   useEffect(() => {
-    const handleResize = () => setVertical(window.innerWidth < 768)
+    const handleResize = () => setVertical(window.innerWidth < 1024)
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
@@ -136,30 +136,66 @@ export default function DataFlow() {
           <p className="lead mt-5 max-w-2xl">Select a step to see the work and tools I use at each stage.</p>
         </Reveal>
 
-        <Reveal className="glass-panel card mt-10 overflow-hidden p-2 sm:p-4">
-          <div className={`w-full ${vertical ? 'h-[790px]' : 'h-[330px]'}`} aria-label="Interactive data workflow">
-            <ReactFlow
-              nodes={nodes}
-              edges={edges}
-              nodeTypes={nodeTypes}
-              onNodeClick={(_, node) => setActiveStage(node.id)}
-              fitView
-              fitViewOptions={{ padding: 0.18, maxZoom: 1 }}
-              nodesDraggable={false}
-              nodesConnectable={false}
-              elementsSelectable={false}
-              panOnDrag={false}
-              zoomOnScroll={false}
-              zoomOnPinch={false}
-              zoomOnDoubleClick={false}
-            >
-              <Background variant={BackgroundVariant.Dots} gap={22} size={1} color="var(--line)" />
-            </ReactFlow>
-          </div>
-          <div className="border-t border-line px-4 py-4 sm:px-6" aria-live="polite">
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">{active.title}</p>
-            <p className="mt-1 text-sm leading-relaxed text-ink">{active.description}</p>
-          </div>
+        <Reveal className="glass-panel card mt-8 overflow-hidden p-4 sm:mt-10 sm:p-4">
+          {vertical ? (
+            <ol className="mobile-flow" aria-label="Interactive data workflow">
+              {stages.map((stage, index) => {
+                const Icon = stage.icon
+                const isActive = activeStage === stage.id
+
+                return (
+                  <li key={stage.id} className="mobile-flow-step">
+                    <button
+                      type="button"
+                      onClick={() => setActiveStage(stage.id)}
+                      aria-pressed={isActive}
+                      className={`mobile-flow-card ${isActive ? 'is-active' : ''}`}
+                    >
+                      <span className="mobile-flow-icon"><Icon aria-hidden="true" /></span>
+                      <span className="mobile-flow-content">
+                        <span className="mobile-flow-title">
+                          <span className="mobile-flow-number">Step {String(index + 1).padStart(2, '0')}</span>
+                          <span className="mobile-flow-name">{stage.title}</span>
+                        </span>
+                        <span className="mobile-flow-description">{stage.description}</span>
+                        <span className="mobile-flow-tools">
+                          {stage.tools.map((tool) => (
+                            <span key={tool} className="mobile-flow-tool">{tool}</span>
+                          ))}
+                        </span>
+                      </span>
+                    </button>
+                  </li>
+                )
+              })}
+            </ol>
+          ) : (
+            <>
+              <div className="h-[330px] w-full" aria-label="Interactive data workflow">
+                <ReactFlow
+                  nodes={nodes}
+                  edges={edges}
+                  nodeTypes={nodeTypes}
+                  onNodeClick={(_, node) => setActiveStage(node.id)}
+                  fitView
+                  fitViewOptions={{ padding: 0.18, maxZoom: 1 }}
+                  nodesDraggable={false}
+                  nodesConnectable={false}
+                  elementsSelectable={false}
+                  panOnDrag={false}
+                  zoomOnScroll={false}
+                  zoomOnPinch={false}
+                  zoomOnDoubleClick={false}
+                >
+                  <Background variant={BackgroundVariant.Dots} gap={22} size={1} color="var(--line)" />
+                </ReactFlow>
+              </div>
+              <div className="border-t border-line px-4 py-4 sm:px-6" aria-live="polite">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">{active.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-ink">{active.description}</p>
+              </div>
+            </>
+          )}
         </Reveal>
       </div>
     </section>

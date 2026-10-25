@@ -18,7 +18,7 @@ export default function Experience() {
             <Reveal key={job.role + job.company} delay={index * 0.05}>
               <li className={`experience-item relative pl-9 ${job.dates.toLowerCase().includes('present') ? 'experience-item-current' : ''}`}>
                 <span className="experience-marker absolute left-1 top-7 h-4 w-4 rounded-full border-[3px] border-accent bg-canvas" aria-hidden="true" />
-                <div className="card experience-card p-5 sm:p-6">
+                <div className="card experience-card p-4 sm:p-6">
                   <div>
                     <button
                       type="button"
@@ -27,12 +27,7 @@ export default function Experience() {
                       onClick={() => setExpandedJob(expandedJob === index ? null : index)}
                       className="group flex w-full items-center justify-between gap-4 text-left"
                     >
-                      <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                        <span className="text-lg font-semibold text-ink">{job.role}</span>
-                        {job.dates.toLowerCase().includes('present') && (
-                          <span className="current-role-badge"><span className="current-role-light" aria-hidden="true" />Current role</span>
-                        )}
-                      </span>
+                      <span className="text-left text-base font-semibold text-ink sm:text-lg">{job.role}</span>
                       <ChevronDown className={`h-5 w-5 shrink-0 text-muted transition-transform ${expandedJob === index ? 'rotate-180' : ''}`} aria-hidden="true" />
                     </button>
                     <p className="mt-1 text-muted">{job.company} <span aria-hidden="true">·</span> {job.location}</p>
@@ -41,7 +36,7 @@ export default function Experience() {
                   <p
                     id={`job-description-${index}`}
                     hidden={expandedJob !== index}
-                    className="mt-4 max-w-3xl border-t border-line pt-4 leading-relaxed text-muted"
+                    className="mt-4 max-w-3xl border-t border-line pt-4 text-sm leading-relaxed text-muted sm:text-base"
                   >
                     {job.description}
                   </p>
