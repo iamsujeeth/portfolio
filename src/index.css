@@ -61,116 +61,46 @@ main { position: relative; z-index: 1; }
 
 .ambient-art {
   position: fixed;
-  z-index: 0;
+  z-index: 5;
   top: 20vh;
-  right: clamp(24px, 6vw, 96px);
-  width: clamp(140px, 17vw, 220px);
+  left: clamp(8px, calc((100vw - 1120px) / 2 - 132px), 128px);
+  width: clamp(128px, 11.5vw, 160px);
   overflow: visible;
-  color: var(--accent);
-  opacity: 0.22;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+  opacity: 0.82;
   pointer-events: none;
   user-select: none;
 }
 
-.ambient-art-orbit {
-  fill: none;
-  stroke: currentColor;
-  stroke-dasharray: 1 6;
-  stroke-width: 0.8;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: ambient-orbit 42s linear infinite;
+.shooting-star {
+  fill: var(--ink);
 }
 
-.ambient-art-orbit-inner {
-  stroke-dasharray: 1 8;
-  opacity: 0.7;
-  animation-direction: reverse;
-  animation-duration: 34s;
-}
-
-.ambient-art-trace {
+.shooting-star-tail {
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
-  stroke-width: 1.2;
+  stroke-width: 2.5;
+  opacity: 0.82;
 }
 
-.ambient-art-trace-dash {
-  stroke-dasharray: 2 8;
-  stroke-width: 1.6;
-  opacity: 0.55;
-  animation: ambient-flow 16s linear infinite;
+.still-star {
+  display: none;
 }
 
-.ambient-art-node {
-  fill: var(--canvas);
-  stroke: currentColor;
-  stroke-width: 1.4;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: ambient-pulse 4s ease-in-out infinite;
-}
-
-.ambient-art-node-delay { animation-delay: 1.3s; }
-.ambient-art-node-delay-long { animation-delay: 2.6s; }
-
-.ambient-art-packet {
-  fill: var(--accent-fill);
-  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--accent) 45%, transparent));
-}
-
-.ambient-art-spark {
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-width: 1;
-  opacity: 0.7;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: ambient-turn 18s linear infinite;
-}
-
-.ambient-art-dot {
-  fill: currentColor;
-  opacity: 0.65;
-  animation: ambient-pulse 5s ease-in-out infinite;
-}
-
-.ambient-art-dot-delay { animation-delay: 2.5s; }
-
-@keyframes ambient-orbit {
-  to { transform: rotate(1turn); }
-}
-
-@keyframes ambient-flow {
-  to { stroke-dashoffset: -100; }
-}
-
-@keyframes ambient-pulse {
-  50% { opacity: 0.3; transform: scale(0.78); }
-}
-
-@keyframes ambient-turn {
-  to { transform: rotate(1turn); }
-}
-
-@media (max-width: 639px) {
+@media (max-width: 1023px) {
   .ambient-art {
-    top: 48vh;
-    right: 2vw;
-    width: 112px;
-    opacity: 0.13;
+    top: 58px;
+    left: auto;
+    right: 8px;
+    width: 96px;
+    opacity: 0.62;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ambient-art-orbit,
-  .ambient-art-trace-dash,
-  .ambient-art-node,
-  .ambient-art-spark,
-  .ambient-art-dot { animation: none; }
-  .ambient-art-packet { display: none; }
+  .moving-star { display: none; }
+  .still-star { display: block; }
 }
 
 .wrap { @apply mx-auto max-w-[1120px] px-5 sm:px-8; }
